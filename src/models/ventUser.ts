@@ -12,4 +12,9 @@ export const ventUserSchema = z.object({
   lastName: z.string().min(1, { message: "Last name is required" }),
   email: z.string().email({ message: "Invalid email address" }),
 });
-export type ventUserInputs = z.infer<typeof ventUserSchema>;
+
+export const ventUserProfileSchema = z.object({
+  firstName: z.string().min(1, { message: "First name is required" }),
+  lastName: z.string().min(1, { message: "Last name is required" }),
+});
+export type ventUserInputs = z.infer<typeof ventUserProfileSchema>;

@@ -8,7 +8,7 @@ import {
   Paper,
   useTheme,
   Theme,
-  Alert
+  Alert,
 } from "@mui/material";
 
 import { useUserStore } from "../services/user/useUserStore";
@@ -65,9 +65,9 @@ const UserProfilePage: React.FC = () => {
       );
     }
 
-     // Delay the redirection by 2 seconds
-     setTimeout(() => {
-      navigate("/")
+    // Delay the redirection by 2 seconds
+    setTimeout(() => {
+      navigate("/");
     }, 2000);
   };
 
@@ -94,14 +94,14 @@ const UserProfilePage: React.FC = () => {
                   <Button
                     onClick={handleEditClick}
                     variant="contained"
-                    color="primary"
+                    color="secondary"
                   >
                     Edit Profile
                   </Button>
                   <Button
                     onClick={logOut}
                     variant="contained"
-                    color="secondary"
+                    color="error"
                     sx={{ marginLeft: theme.spacing(1) }}
                   >
                     Logout
@@ -153,21 +153,21 @@ const UserProfilePage: React.FC = () => {
                     }
                     disabled
                   />
-                  <Box>
+                  <Box sx={{ display: "flex", justifyContent: "end" }}>
                     <Button
-                      onClick={handleUpdateProfile}
+                      onClick={handleCancelEdit}
                       variant="contained"
                       color="primary"
                     >
-                      Save Changes
+                      Cancel
                     </Button>
                     <Button
-                      onClick={handleCancelEdit}
+                      onClick={handleUpdateProfile}
                       variant="contained"
                       color="secondary"
                       sx={{ marginLeft: theme.spacing(1) }}
                     >
-                      Cancel
+                      Save Changes
                     </Button>
                   </Box>
                 </Box>
