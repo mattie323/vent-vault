@@ -144,7 +144,8 @@ const Login: React.FC = () => {
           >
             <Button
               fullWidth
-              color="primary"
+              color="secondary"
+              variant="contained"
               sx={{ mt: 1, mb: 5, width: "250px", alignItems: "center" }}
               onClick={handleSignUp}
             >

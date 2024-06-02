@@ -18,15 +18,16 @@ function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route>
+        {/* Home page */}
         <Route index element={<HomePage />} />
+        <Route path="/signup" element={<SignUpPage />} />
 
-        {/* Routes inside MainLayout */}
+        {/* Logged in routes */}
         <Route path="/landing-page" element={<MainLayout />}>
           <Route index element={<UserHome />} />
           <Route path="user-profile" element={<UserProfilePage />} />
           <Route path="create-vent" element={<CreateVentPage />} />
         </Route>
-        <Route path="/signup" element={<SignUpPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>,
     ),

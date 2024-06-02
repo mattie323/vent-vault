@@ -1,10 +1,22 @@
-import React, { useEffect, useState } from "react";
-// import supabase from "../lib/helper/supabaseClient";
+import React from "react";
+import useUserAuthService from "../services/user/useUserAuthService";
 
-const UserHome = () => {
+const UserHome: React.FC = () => {
+  const { user, logOut } = useUserAuthService();
+
   return (
     <div>
-      <h1>Welcome, Guest</h1>
+      {user ? (
+        <div>
+          <h1>
+            Welcome, {user.firstName} {user.lastName}
+          </h1>
+          <p>Email: {user.email}</p>
+          <button onClick={logOut}>Log Out</button>
+        </div>
+      ) : (
+        <h1>Welcome, Guest</h1>
+      )}
     </div>
   );
 };

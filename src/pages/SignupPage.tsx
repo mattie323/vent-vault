@@ -4,13 +4,23 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import type { SignUpFormInputs } from "../models/SignUp";
 import { signUpSchema } from "../models/SignUp";
-import { TextField, Button, Container, Typography, Box, Alert } from "@mui/material";
+import {
+  TextField,
+  Button,
+  Container,
+  Typography,
+  Box,
+  Alert,
+} from "@mui/material";
 import supabase from "../lib/helper/supabaseClient";
 import theme from "../theme/theme";
 
 const SignUp: React.FC = () => {
   const navigate = useNavigate();
-  const [alertInfo, setAlertInfo] = useState<{ type: "success" | "error"; message: string } | null>(null);
+  const [alertInfo, setAlertInfo] = useState<{
+    type: "success" | "error";
+    message: string;
+  } | null>(null);
   const {
     register,
     handleSubmit,
@@ -41,12 +51,18 @@ const SignUp: React.FC = () => {
         throw new Error(signUpError.message);
       }
 
-      setAlertInfo({ type: "success", message: "Successfully signed up, check your email to confirm" });
+      setAlertInfo({
+        type: "success",
+        message: "Successfully signed up, check your email to confirm",
+      });
       setTimeout(() => {
-        navigate('/');
+        navigate("/");
       }, 3000); // Navigate after showing the success message for a little while
     } catch (error) {
-      setAlertInfo({ type: "error", message: `Error signing up: ${error.message}` });
+      setAlertInfo({
+        type: "error",
+        message: `Error signing up: ${error.message}`,
+      });
     }
   };
 
@@ -60,6 +76,14 @@ const SignUp: React.FC = () => {
         marginTop: theme.custom.spacing.large,
       }}
     >
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={() => navigate(-1)}
+        sx={{ mr: theme.custom.spacing.medium }}
+      >
+        Back
+      </Button>
       <Box
         sx={{
           display: "flex",
@@ -69,26 +93,18 @@ const SignUp: React.FC = () => {
         }}
       >
         {alertInfo && (
-          <Alert severity={alertInfo.type} sx={{ width: '100%', mb: 2 }}>
+          <Alert severity={alertInfo.type} sx={{ width: "100%", mb: 2 }}>
             {alertInfo.message}
           </Alert>
         )}
         <Box
           sx={{
             display: "flex",
-            justifyContent: "space-center",
+            justifyContent: "justify-between",
             mt: theme.custom.spacing.medium,
             mb: theme.custom.spacing.medium,
           }}
         >
-          <Button
-            variant="contained"
-            color="secondary"
-            onClick={() => navigate(-1)}
-            sx={{ mr: theme.custom.spacing.medium }}
-          >
-            Back
-          </Button>
           <Typography
             component="h1"
             variant="h5"
@@ -159,7 +175,7 @@ const SignUp: React.FC = () => {
             <Button
               type="submit"
               variant="contained"
-              color="primary"
+              color="secondary"
               sx={{ width: "40%" }}
             >
               Sign Up
