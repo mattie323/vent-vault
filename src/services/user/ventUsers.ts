@@ -1,5 +1,5 @@
 import supabase from "../../lib/helper/supabaseClient";
-import { ventUser } from "../../models/User";
+import { ventUser } from "../../models/ventUser";
 
 export async function ventUserSignIn({
     email,

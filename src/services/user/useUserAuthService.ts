@@ -2,13 +2,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import supabase from "../../lib/helper/supabaseClient";
 import { useUserStore } from "./useUserStore";
-
-interface User {
-  id: string;
-  email: string;
-  firstName: string;
-  lastName: string;
-}
+import { ventUser } from "../../models/ventUser";
 
 function useUserAuthService() {
   const navigate = useNavigate();
@@ -24,7 +18,7 @@ function useUserAuthService() {
 
       if (session?.user) {
         const { data: user, error: userError } = await supabase
-          .from<User>("users")
+          .from<ventUser>("users")
           .select("id, email, firstName, lastName")
           .eq("id", session.user.id)
           .single();
@@ -47,7 +41,7 @@ function useUserAuthService() {
       console.log("Auth State Changed: ", event, session);
       if (session?.user) {
         supabase
-          .from<User>("users")
+          .from<ventUser>("users")
           .select("id, email, firstName, lastName")
           .eq("id", session.user.id)
           .single()

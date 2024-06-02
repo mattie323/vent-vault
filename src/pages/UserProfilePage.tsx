@@ -1,13 +1,15 @@
 import React from "react";
-import { Typography, Container, Box, Button, Paper, useTheme, Theme } from "@mui/material";
+import {
+  Typography,
+  Container,
+  Box,
+  Button,
+  Paper,
+  useTheme,
+  Theme,
+} from "@mui/material";
 import { useUserStore } from "../services/user/useUserStore";
 import useUserAuthService from "../services/user/useUserAuthService";
-
-interface User {
-  firstName?: string;
-  lastName?: string;
-  email?: string;
-}
 
 const UserProfilePage: React.FC = () => {
   const { user } = useUserStore();
@@ -18,7 +20,10 @@ const UserProfilePage: React.FC = () => {
   if (!user) {
     return (
       <Container maxWidth="md" sx={{ mt: theme.spacing(6) }}>
-        <Typography variant="h6" sx={{ textAlign: 'center', marginTop: theme.spacing(3) }}>
+        <Typography
+          variant="h6"
+          sx={{ textAlign: "center", marginTop: theme.spacing(3) }}
+        >
           You are not logged in.
         </Typography>
       </Container>
@@ -47,7 +52,12 @@ const UserProfilePage: React.FC = () => {
             <Button variant="contained" color="primary">
               Edit Profile
             </Button>
-            <Button onClick={logOut} variant="contained" color="secondary" sx={{ marginLeft: theme.spacing(1) }}>
+            <Button
+              onClick={logOut}
+              variant="contained"
+              color="secondary"
+              sx={{ marginLeft: theme.spacing(1) }}
+            >
               Logout
             </Button>
           </Box>
