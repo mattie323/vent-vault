@@ -14,6 +14,7 @@ import UserHome from "./pages/UserHome.tsx";
 import UserProfilePage from "./pages/UserProfilePage.tsx";
 import SignUpPage from "./pages/SignupPage.tsx";
 import CreateVentPage from "./pages/CreateVentPage.tsx";
+
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(

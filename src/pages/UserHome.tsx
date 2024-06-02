@@ -1,23 +1,23 @@
 import React from "react";
+import { Container, Typography, Box } from "@mui/material";
 import useUserAuthService from "../services/user/useUserAuthService";
 
 const UserHome: React.FC = () => {
   const { user, logOut } = useUserAuthService();
 
   return (
-    <div>
+    <Container maxWidth="sm" sx={{ mt: 4 }}>
       {user ? (
-        <div>
-          <h1>
+        <Box display="flex" flexDirection="column" alignItems="flex-start">
+          <Typography variant="h4" gutterBottom>
             Welcome, {user.firstName} {user.lastName}
-          </h1>
-          <p>Email: {user.email}</p>
-          <button onClick={logOut}>Log Out</button>
-        </div>
+          </Typography>
+          <Typography variant="body1">Email: {user.email}</Typography>
+        </Box>
       ) : (
-        <h1>Welcome, Guest</h1>
+        <Typography variant="h4">Loading...</Typography>
       )}
-    </div>
+    </Container>
   );
 };
 

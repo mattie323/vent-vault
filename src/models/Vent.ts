@@ -6,4 +6,10 @@ export const VentSchema = z.object({
     .min(1, {
       message: 'Title is required, provide at least one character or more',
     }),
+  feeling: z
+  .string()
+  .min(1,{message: 'Feeling is required'}),
+  message: z
+  .string()
+  .min(1,{message: 'Feeling is required'}),
 })

@@ -15,8 +15,11 @@ import theme from "../theme/theme";
 import { useNavigate } from "react-router-dom";
 import type { LoginFormInputs } from "../models/Login";
 import { loginSchema } from "../models/Login";
+import { useUserStore } from "../services/user/useUserStore";
+import AuthRedirect from "../services/AuthRedirect";
 
 const Login: React.FC = () => {
+  const { user } = useUserStore();
   const navigate = useNavigate();
   const {
     register,
@@ -79,82 +82,88 @@ const Login: React.FC = () => {
   };
 
   return (
-    <Container
-      maxWidth="sm"
-      sx={{
-        backgroundColor: theme.custom.backgroundColor.default,
-        padding: theme.custom.spacing.medium,
-        borderRadius: theme.custom.borderRadius.medium,
-        marginTop: theme.custom.spacing.large,
-      }}
-    >
-      <Box
+    <AuthRedirect redirectPath="/landing-page" shouldRedirect={(user)=> !!user}>
+      <Container
+        maxWidth="sm"
         sx={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
+          backgroundColor: theme.custom.backgroundColor.default,
+          padding: theme.custom.spacing.medium,
+          borderRadius: theme.custom.borderRadius.medium,
           marginTop: theme.custom.spacing.large,
         }}
       >
-        {alert.show && (
-          <Alert severity={alert.severity} sx={{ width: "100%", mb: 2 }}>
-            {alert.message}
-          </Alert>
-        )}
-        <Box component="form" onSubmit={handleSubmit(onSubmit)} sx={{ mt: 1 }}>
-          <TextField
-            margin="normal"
-            fullWidth
-            label="Email"
-            variant="outlined"
-            color="primary"
-            {...register("email")}
-            error={!!errors.email}
-            helperText={errors.email?.message}
-            sx={{ marginBottom: theme.custom.spacing.medium }}
-          />
-          <TextField
-            margin="normal"
-            fullWidth
-            label="Password"
-            type="password"
-            variant="outlined"
-            color="primary"
-            {...register("password")}
-            error={!!errors.password}
-            helperText={errors.password?.message}
-            sx={{ marginBottom: theme.custom.spacing.medium }}
-          />
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            sx={{ mt: 3, mb: 2 }}
-          >
-            Login
-          </Button>
-          <Divider sx={{ mb: 2 }} />
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            marginTop: theme.custom.spacing.large,
+          }}
+        >
+          {alert.show && (
+            <Alert severity={alert.severity} sx={{ width: "100%", mb: 2 }}>
+              {alert.message}
+            </Alert>
+          )}
           <Box
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-            }}
+            component="form"
+            onSubmit={handleSubmit(onSubmit)}
+            sx={{ mt: 1 }}
           >
-            <Button
+            <TextField
+              margin="normal"
               fullWidth
-              color="secondary"
+              label="Email"
+              variant="outlined"
+              color="primary"
+              {...register("email")}
+              error={!!errors.email}
+              helperText={errors.email?.message}
+              sx={{ marginBottom: theme.custom.spacing.medium }}
+            />
+            <TextField
+              margin="normal"
+              fullWidth
+              label="Password"
+              type="password"
+              variant="outlined"
+              color="primary"
+              {...register("password")}
+              error={!!errors.password}
+              helperText={errors.password?.message}
+              sx={{ marginBottom: theme.custom.spacing.medium }}
+            />
+            <Button
+              type="submit"
+              fullWidth
               variant="contained"
-              sx={{ mt: 1, mb: 5, width: "250px", alignItems: "center" }}
-              onClick={handleSignUp}
+              color="primary"
+              sx={{ mt: 3, mb: 2 }}
             >
-              Sign Up
+              Login
             </Button>
+            <Divider sx={{ mb: 2 }} />
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+              }}
+            >
+              <Button
+                fullWidth
+                color="secondary"
+                variant="contained"
+                sx={{ mt: 1, mb: 5, width: "250px", alignItems: "center" }}
+                onClick={handleSignUp}
+              >
+                Sign Up
+              </Button>
+            </Box>
           </Box>
         </Box>
-      </Box>
-    </Container>
+      </Container>
+    </AuthRedirect>
   );
 };
 
