@@ -14,6 +14,7 @@ import UserHome from "./pages/UserHome.tsx";
 import UserProfilePage from "./pages/UserProfilePage.tsx";
 import SignUpPage from "./pages/SignupPage.tsx";
 import CreateVentPage from "./pages/CreateVentPage.tsx";
+import VentDetailsPage from "./pages/VentDetailsPage.tsx";
 
 function App() {
   const router = createBrowserRouter(
@@ -21,6 +22,7 @@ function App() {
       <Route>
         {/* Home page */}
         <Route index element={<HomePage />} />
+
         <Route path="/signup" element={<SignUpPage />} />
 
         {/* Logged in routes */}
@@ -28,7 +30,9 @@ function App() {
           <Route index element={<UserHome />} />
           <Route path="user-profile" element={<UserProfilePage />} />
           <Route path="create-vent" element={<CreateVentPage />} />
+          <Route path="vent-details/id:" element={<VentDetailsPage />} />
         </Route>
+
         <Route path="*" element={<NotFoundPage />} />
       </Route>,
     ),
