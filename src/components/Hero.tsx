@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Typography } from "@mui/material";
 
-const Hero = () => {
+const Hero: React.FC = () => {
   return (
     <Container maxWidth="lg" sx={{ textAlign: "start" }}>
       <Typography variant="h2" component="h1" gutterBottom>

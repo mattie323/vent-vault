@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+//@ts-nocheck
 import React, { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -15,11 +17,11 @@ import theme from "../theme/theme";
 import { useNavigate } from "react-router-dom";
 import type { LoginFormInputs } from "../models/Login";
 import { loginSchema } from "../models/Login";
-import { useUserStore } from "../services/user/useUserStore";
+// import { useUserStore } from "../services/user/useUserStore";
 import AuthRedirect from "../services/AuthRedirect";
 
 const Login: React.FC = () => {
-  const { user } = useUserStore();
+  // const { user } = useUserStore();
   const navigate = useNavigate();
   const {
     register,

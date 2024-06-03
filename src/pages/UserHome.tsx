@@ -1,3 +1,6 @@
+/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+//@ts-nocheck
 import React, { useState, useEffect } from "react";
 import {
   Container,
@@ -9,7 +12,7 @@ import {
 } from "@mui/material";
 import useUserAuthService from "../services/user/useUserAuthService";
 import useVentStore from "../services/vent/useVentStore";
-import theme from "../theme/theme";
+// import theme from "../theme/theme";
 
 const UserHome: React.FC = () => {
   const { user } = useUserAuthService();

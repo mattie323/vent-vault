@@ -11,7 +11,7 @@ import theme from "../theme/theme";
 import venvaultLogo from "../images/vaultimg.png";
 import React from "react";
 
-const NavBar = () => {
+const NavBar: React.FC = () => {
   const navigate = useNavigate();
   return (
     <>

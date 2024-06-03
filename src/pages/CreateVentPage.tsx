@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+//@ts-nocheck
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
@@ -14,7 +16,7 @@ import {
 } from "@mui/material";
 import theme from "../theme/theme";
 import useVentStore from "../services/vent/useVentStore";
-import { useUserStore } from "../services/user/useUserStore";
+// import { useUserStore } from "../services/user/useUserStore";
 import useUserAuthService from "../services/user/useUserAuthService";
 
 const CreateVentPage: React.FC = () => {

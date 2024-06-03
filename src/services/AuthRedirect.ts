@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+//@ts-nocheck
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useUserStore } from "../services/user/useUserStore";

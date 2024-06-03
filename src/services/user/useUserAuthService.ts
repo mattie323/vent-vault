@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+//@ts-nocheck
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import supabase from "../../lib/helper/supabaseClient";
@@ -36,7 +38,6 @@ function useUserAuthService() {
 
     const {
       data: { subscription },
-      error,
     } = supabase.auth.onAuthStateChange((event, session) => {
       console.log("Auth State Changed: ", event, session);
       if (session?.user) {

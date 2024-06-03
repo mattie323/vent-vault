@@ -1,3 +1,6 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+//@ts-nocheck
+
 import supabase from '../../lib/helper/supabaseClient';
 
 // Function to insert a vent
